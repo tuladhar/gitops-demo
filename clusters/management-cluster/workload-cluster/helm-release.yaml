@@ -1,21 +1,3 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: GitRepository
-metadata:
-  name: helm-sync
-  namespace: flux-system
-spec:
-  secretRef:
-    name: flux-system
-  url: ssh://git@github.com/tuladhar/gitops-demo
-  interval: 1m
-  ref:
-    branch: main
-  ignore: |
-    # exclude all
-    /*
-    # include charts directory
-    !/charts/ 
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
