@@ -32,7 +32,7 @@ spec:
         matchResources:
           controlPlane: true
     description: Sets the imageRepository used for the KubeadmControlPlane.
-    enabledIf: '{{ ne .imageRepository "" }}'
+    enabledIf: {{`'{{ ne .imageRepository "" }}'`}}
     name: imageRepository
   - definitions:
     - jsonPatches:
@@ -51,7 +51,7 @@ spec:
       Sets the cgroupDriver to cgroupfs if a Kubernetes version < v1.24 is referenced.
       This is required because kind and the node images do not support the default
       systemd cgroupDriver for kubernetes < v1.24.
-    enabledIf: '{{ semverCompare "<= v1.23" .builtin.controlPlane.version }}'
+    enabledIf: {{`'{{ semverCompare "<= v1.23" .builtin.controlPlane.version }}'`}}
     name: cgroupDriver-controlPlane
   - definitions:
     - jsonPatches:
@@ -69,7 +69,7 @@ spec:
       Sets the cgroupDriver to cgroupfs if a Kubernetes version < v1.24 is referenced.
       This is required because kind and the node images do not support the default
       systemd cgroupDriver for kubernetes < v1.24.
-    enabledIf: '{{ semverCompare "<= v1.23" .builtin.machineDeployment.version }}'
+    enabledIf: {{`'{{ semverCompare "<= v1.23" .builtin.machineDeployment.version }}'`}}
     name: cgroupDriver-machineDeployment
   - definitions:
     - jsonPatches:
@@ -78,7 +78,7 @@ spec:
         valueFrom:
           template: |
             local:
-              imageTag: {{ .etcdImageTag }}
+              imageTag: {{`{{ .etcdImageTag }}`}}
       selector:
         apiVersion: controlplane.cluster.x-k8s.io/v1beta1
         kind: KubeadmControlPlaneTemplate
@@ -92,7 +92,7 @@ spec:
         path: /spec/template/spec/kubeadmConfigSpec/clusterConfiguration/dns
         valueFrom:
           template: |
-            imageTag: {{ .coreDNSImageTag }}
+            imageTag: {{`{{ .coreDNSImageTag }}`}}
       selector:
         apiVersion: controlplane.cluster.x-k8s.io/v1beta1
         kind: KubeadmControlPlaneTemplate
@@ -106,7 +106,7 @@ spec:
         path: /spec/template/spec/customImage
         valueFrom:
           template: |
-            kindest/node:{{ .builtin.machineDeployment.version | replace "+" "_" }}
+            kindest/node:{{`{{ .builtin.machineDeployment.version | replace "+" "_" }}`}}
       selector:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: DockerMachineTemplate
@@ -119,7 +119,7 @@ spec:
         path: /spec/template/spec/customImage
         valueFrom:
           template: |
-            kindest/node:{{ .builtin.controlPlane.version | replace "+" "_" }}
+            kindest/node:{{`{{ .builtin.controlPlane.version | replace "+" "_" }}`}}
       selector:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: DockerMachineTemplate
@@ -155,11 +155,11 @@ spec:
                     apiVersion: pod-security.admission.config.k8s.io/v1beta1
                     kind: PodSecurityConfiguration
                     defaults:
-                      enforce: "{{ .podSecurityStandard.enforce }}"
+                      enforce: {{`"{{ .podSecurityStandard.enforce }}"`}}
                       enforce-version: "latest"
-                      audit: "{{ .podSecurityStandard.audit }}"
+                      audit: {{`"{{ .podSecurityStandard.audit }}"`}}
                       audit-version: "latest"
-                      warn: "{{ .podSecurityStandard.warn }}"
+                      warn: {{`"{{ .podSecurityStandard.warn }}"`}}
                       warn-version: "latest"
                     exemptions:
                       usernames: []
@@ -172,7 +172,7 @@ spec:
         matchResources:
           controlPlane: true
     description: Adds an admission configuration for PodSecurity to the kube-apiserver.
-    enabledIf: '{{ .podSecurityStandard.enabled }}'
+    enabledIf: {{`'{{ .podSecurityStandard.enabled }}'`}}
     name: podSecurityStandard
   variables:
   - name: imageRepository
