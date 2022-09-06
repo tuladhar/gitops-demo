@@ -16,4 +16,4 @@ spec:
       interval: 1m
   values:
     workers:
-      replicaCount: 3
+      replicaCount: 4
