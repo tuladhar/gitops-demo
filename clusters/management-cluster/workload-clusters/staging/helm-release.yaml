@@ -14,6 +14,6 @@ spec:
         name: helm-chart
         namespace: flux-system
       interval: 1m
-  # values:
-  #   workers:
-  #     replicas: 1
+  values:
+    workers:
+      replicas: 2
