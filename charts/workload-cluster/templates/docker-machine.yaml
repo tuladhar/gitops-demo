@@ -2,7 +2,6 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: DockerMachineTemplate
 metadata:
   name: quick-start-control-plane
-  namespace: default
 spec:
   template:
     spec:
@@ -14,7 +13,6 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: DockerMachineTemplate
 metadata:
   name: quick-start-default-worker-machinetemplate
-  namespace: default
 spec:
   template:
     spec:
