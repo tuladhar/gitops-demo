@@ -16,4 +16,4 @@ spec:
       interval: 30s
   values:
     workers:
-      replicas: 2
+      replicas: 1
