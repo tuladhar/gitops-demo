@@ -4,7 +4,7 @@ metadata:
   name: staging-workload-cluster
   namespace: default
 spec:
-  interval: 1m
+  interval: 30s
   chart:
     spec:
       chart: './charts/workload-cluster'
@@ -13,7 +13,7 @@ spec:
         kind: GitRepository
         name: helm-chart
         namespace: flux-system
-      interval: 1m
+      interval: 30s
   values:
     workers:
-      replicas: 2
+      replicas: 1

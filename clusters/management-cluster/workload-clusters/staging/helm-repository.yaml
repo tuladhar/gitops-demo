@@ -7,7 +7,7 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/tuladhar/gitops-demo
-  interval: 1m
+  interval: 30s
   ref:
     branch: main
   ignore: |
