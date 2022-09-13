@@ -1,2 +1,8 @@
+kube:
+  version: v1.24.0
+
+controlplane:
+  replicas: 1
+
 workers:
-  replicaCount: 1
+  replicas: 2
