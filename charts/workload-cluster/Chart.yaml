@@ -1,6 +1,6 @@
 apiVersion: v2
 name: workload-cluster
-description: A Helm chart for Kubernetes
+description: A Helm chart for Cluster API workload cluster
 
 # A chart can be either an 'application' or a 'library' chart.
 #
