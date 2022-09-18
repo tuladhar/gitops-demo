@@ -8,12 +8,13 @@ spec:
   chart:
     spec:
       chart: './charts/workload-cluster'
-      version: '0.9.0'
+      version: '0.9.1'
       sourceRef:
         kind: GitRepository
         name: helm-chart
         namespace: flux-system
       interval: 30s
   values:
+    clusterName: staging-workload-cluster
     workers:
       replicas: 1
