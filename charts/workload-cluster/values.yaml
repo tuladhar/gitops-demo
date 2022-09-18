@@ -1,3 +1,5 @@
+clusterName: workload-cluster
+
 kube:
   version: v1.24.0
 
