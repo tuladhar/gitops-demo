@@ -18,3 +18,6 @@ Simplify Kubernetes cluster lifecycle management (create, scale, upgrade, destro
 ## Watch Demo
 ![image](https://user-images.githubusercontent.com/5674762/193455517-b652f070-b7e4-4266-9117-d880e7e8c131.png)
 https://youtu.be/_hh48p2sVCM
+
+## Demo Workflow
+![image](https://user-images.githubusercontent.com/5674762/193455121-4b6fe51f-a340-489a-a206-11baf2fc08a9.png)
